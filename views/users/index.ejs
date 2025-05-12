@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Data</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container text-center mt-3">
+      <h3>All Data</h3>
+      <form method="GET" action="/users/new">
+        <button class="btnData">Create New Data</button>
+      </form>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+
+        <tr class="text-center">
+          <%for (let user of allUsers){%>
+          <td class="name text-center">
+            <%= user.f_name %> <% "join" %> <%= user.l_name %>
+          </td>
+          <td>
+            <button class="btnData">
+              <a href="/users/<%= user._id %>">Details</a>
+            </button>
+            <form method="GET" action="/users/<%= user._id %>/edit">
+              <button class="btnData">Edit</button>
+            </form>
+            <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
+              <button class="btnData">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
