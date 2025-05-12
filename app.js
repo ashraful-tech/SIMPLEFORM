@@ -27,11 +27,6 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
-//root directory
-app.get("/", (req, res) => {
-  res.send("this is root");
-});
-
 //Show Users or Index route
 app.get("/users", async (req, res) => {
   const allUsers = await User.find({});
